@@ -1,0 +1,20 @@
+{
+  "name": "new-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend-dev": "webpack-dev-server --port 8000 --config build/client.webpack.config.dev.js  --hot --inline --history-api-fallback"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "client": "file:/media/dev/LinuxStorage1/sites/igorim/new-site/client",
+    "nodemon": "^1.9.2",
+    "react-to-html-webpack-plugin": "^2.2.0",
+    "server": "file:/media/dev/LinuxStorage1/sites/igorim/new-site/server",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {}
+}

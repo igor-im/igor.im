@@ -1,0 +1,153 @@
+body {
+  background: black;
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+/* NAV */
+#right-nav {
+  top: 0%;
+  right: 0%;
+  position: fixed;
+  font-size: 200%;
+  line-height: 200%;
+  background: yellow;
+  width: 25%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Hamburger Menu */
+#burger {
+  height: 3vh;
+  width: 3vh;
+  top: 3vh;
+  right: 3vh;
+  position: fixed;
+  z-index: 1;
+}
+
+.hamburger {
+  border: 1px;
+  border-color: white;
+  height: 20%;
+  background: white;
+  -webkit-transition: all 1600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 1600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.eating > .line-1 {
+  background: red;
+  transform: translate(0, 200%) rotate(-45deg);
+}
+
+.eating > .line-2 {
+  background: red;
+  width: 0px;
+}
+
+.eating > .line-3 {
+  background: red;
+  transform: rotate(45deg);
+}
+
+.hungry > .line-2 {
+  margin-top: 20%;
+}
+
+.hungry > .line-3 {
+  margin-top: 20%;
+}
+
+/* Nav Menu */
+#nav-menu {
+  list-style: none;
+  display: flex;
+  padding: 5px;
+  margin-top: 9vh;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+#nav-menu a {
+  color: black;
+  text-decoration: none;
+}
+
+#nav-menu li {
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  justify-content: flex-end;
+  margin-right: 3vh;
+}
+
+#resume {
+  h5 {
+    font-size: medium
+  }
+}
+
+#work-exp {
+  div {
+    div {
+      span {
+        h4 {
+          display: inline-block;
+          -webkit-margin-before: 15px;
+          -webkit-margin-after: 0;
+        }
+      }
+    }
+  }
+  h5 {
+    -webkit-margin-before: 15px;
+    -webkit-margin-after: 0;
+  }
+}
+
+#blog-container {
+  .categories {
+    li {
+      list-style: none;
+      display: inline;
+      margin: 10px;
+      a {
+        text-decoration: none;
+        font-size: large;
+      }
+    }
+  }
+}
+
+////////////////////////////////////
+
+.terminal_container {
+  background: rgba(100,100,100, 0.5);
+  width: 50vw;
+  height: 50vh;
+  position: absolute;
+  //top: 25vh;
+  //right: 25vw;
+  .terminal_top {
+    background: yellow;
+    height: 5%;
+    border-radius: 5px 5px 0 0;
+  }
+  .terminal_body {
+    input {
+      background: inherit;
+      border: none;
+      color: white;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+
