@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import commandHandler from '../../utilities/commandHandler.js'
 
 export default class Terminal extends React.Component {
     constructor(props) {
@@ -19,7 +20,8 @@ export default class Terminal extends React.Component {
             content: '',
             contentHistory: [],
             prompt_l1: new Date().toString(),
-            prompt_l2: window.navigator.platform
+            prompt_l2: window.navigator.platform,
+            focus: false
         }
     }
     drag_start(event) {
@@ -39,17 +41,34 @@ export default class Terminal extends React.Component {
             }
         })
     }
+    tabHelper() {
+        return 'Commands are navigate, goto, take me to'
+    }
     handleTerminalCommand(e) {
-        if(e.key === "Enter") {
+        e.preventDefault()
+        if(e.key === "Tab") {
             let arrCopy = this.state.contentHistory
             if(arrCopy.length > 100) arrCopy.shift()
-            arrCopy.push([this.state.prompt_l1, this.state.prompt_l2, this.state.content])
+            arrCopy.push([this.state.prompt_l1, this.state.prompt_l2, this.state.content, this.tabHelper()])
             this.setState({
                 contentHistory: arrCopy,
                 content: '',
                 prompt_l1: new Date().toString()
             })
         }
+        if(e.key === "Enter") {
+            let arrCopy = this.state.contentHistory
+            if(arrCopy.length > 100) arrCopy.shift()
+            arrCopy.push([this.state.prompt_l1, this.state.prompt_l2, this.state.content, commandHandler(this.state.content)])
+            this.setState({
+                contentHistory: arrCopy,
+                content: '',
+                prompt_l1: new Date().toString()
+            })
+        }
+    }
+    focusContainer() {
+        this.refs.terminalContent.focus()
     }
     handleChange(e) {
         this.setState({
@@ -62,17 +81,23 @@ export default class Terminal extends React.Component {
                     onDragEnd={this.drag_end.bind(this)} 
                     x={this.state.position.x} 
                     y={this.state.position.y}
+                    onClick={this.focusContainer.bind(this)}
                     draggable='true' 
                     style={{ top: this.state.position.y, left: this.state.position.x}}>
-            <div className="terminal_top"></div>
+            <div className="terminal_top">
+                <span className='circle'></span>
+                <span className='circle'></span>
+                <span className='circle'></span>
+            </div>
             <div className="terminal_body">
                 {this.state.contentHistory.map((v,i) => {
-                    return <div key={i}><div>{v[0]}</div><div>{v[1]}</div><div>{v[2]}</div></div>
+                    return <div key={i}><div>{v[0]}</div><div>{v[1]}</div><div>{v[2]}</div><div>{v[3]}</div></div>
                 })}
                 <div><div className='terminal_line_1_prompt'>{this.state.prompt_l1}</div><div className='terminal_line_1_prompt'>visitor/{this.state.prompt_l2}@igor.im:~$
                 <input type='text' 
+                        ref='terminalContent'
                         onChange={this.handleChange.bind(this)} 
-                        onKeyUp={this.handleTerminalCommand.bind(this)}
+                        onKeyDown={this.handleTerminalCommand.bind(this)}
                         value={this.state.content}
                 /></div></div>
             </div>

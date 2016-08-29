@@ -135,8 +135,16 @@ a {
   //right: 25vw;
   .terminal_top {
     background: yellow;
-    height: 5%;
+    height: 2.5vh;
     border-radius: 5px 5px 0 0;
+    .circle {
+      border-radius: 50%;
+      background: black;
+      width: 1.5vh;
+      height: 1.5vh;
+      display: inline-block;
+      margin: 0.5vh 0vh 0.5vh 0.5vh;
+    }
   }
   .terminal_body {
     input {
