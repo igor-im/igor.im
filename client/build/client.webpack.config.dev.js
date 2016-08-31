@@ -7,13 +7,13 @@ var definePlugin = new webpack.DefinePlugin({
 module.exports = {
 		name: 'client',
 		target: 'web',
-	    context: __dirname + "/../client/src",
+	    context: __dirname + "/client/src",
 	    entry: {
 		  javascript: "./app.js",
 		  html: "./index.html"
 	  	},
 	    output: {
-	        path: __dirname + "/../client/dist",
+	        path: __dirname + "/client/dist",
 	        filename: "app.js",
 	        publicPath: ""
 	    },

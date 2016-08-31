@@ -1,0 +1,16 @@
+install:
+- cd client
+- npm install
+script:
+- webpack --config ./build/client.webpack.config.prod.js
+deploy:
+  provider: s3
+  access_key_id: 'AKIAIRA6S7UNK2IE7O2Q'
+  secret_access_key:
+    secure: GpgBjwDYbIOze9+CpmXAAw1Mzc9ozU9YW6JwlTWLGHFsaZvfa2QbI9UgHgtHGxz8fFJXq+DCQsJvy0jqPzZAVS+ACLD0G2vRKzyasd/f/amrupnyBswOCVMzbHd9mTkblg17eT5prnrI/Y5D4J9S1GZxKRvRc/8ePvkk/UH/9QmNkZMIuvGadtv+K5Uwp6tqarTJzpJZjgh1tTT5vURSEDwu+lA5Gy6uyJl+NrZG+lZNUuGbcDJljd8F5Pkj1yuV36vROcNnKort60w8tQocUFkdfB+oGflJhmtuAJJgdlUSV2po1f3LcbNG+R5p7DvOYjJJ1/yaIf812qaCoLEUhAvCwn00h+AqlEpMZHVqNX5YLAkHiCC+zm1o5PneXHpZcki89aaxCBuKEYmcHm6I297sapZrJ0I//GKEYfKSGkG9vJIDJyDtK2z3niyEAoomMWIE/+fCGKe/ReeKGCpANEz+nXeaFJmGTUFAx4WMjhX28Rudw8wtJL9mtC7IQnjRA6WcUXgea4VzY0EiE5Sry6PAS8W2Au8bcfk4CEnR8a4ZJeq9+PYSu7yPMbumlx72s87pC1qu0+D37rtRTM8sVellaeD7oFGsSnray9gk948jqUnt9HFrGw4QcqHqG5TtznXfGYv/gAK03x2nMlI6JRqRgH/YtESyiGJDgJOeYD8=
+  bucket: beta.igor.im
+  acl: public_read
+  skip_cleanup: true
+  on:
+    repo: igor-im/igor.im
+  local_dir: client/dist
