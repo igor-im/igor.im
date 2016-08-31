@@ -16,4 +16,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: igor-im/igor.im
-  local_dir: client/dist
+  local_dir: dist
