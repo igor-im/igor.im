@@ -18,7 +18,7 @@ export class App extends React.Component {
         return <div>
             <RightNav />
             {this.props.children || <Pages.Home />}
-            <Terminal />
+            {/* <Terminal /> */}
         </div>
     }
 }

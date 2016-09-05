@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install",
-    "frontend-dev": "webpack-dev-server --port 8000 --config build/client.webpack.config.dev.js --hot --inline --history-api-fallback"
+    "frontend-dev": "webpack-dev-server --port 8000 --config client/build/client.webpack.config.dev.js --hot --inline --history-api-fallback"
   },
   "author": "",
   "license": "ISC",

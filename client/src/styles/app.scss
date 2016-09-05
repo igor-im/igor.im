@@ -1,6 +1,7 @@
 body {
   background: black;
   color: white;
+  font-family: 'Roboto';
 }
 
 a {
@@ -159,3 +160,60 @@ a {
   }
 }
 
+/////////////////////////////////////////
+.content-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 6vw;
+    margin-left: 2vw;
+    margin-top: 6vh;
+    align-content: space-between;
+    justify-content: space-between;
+}
+.card {
+    height: 45vh;
+    margin-bottom: 2vh;
+    margin-right: 1vw;
+    width: 15vw;
+    border: white;
+    border-style: dashed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .heading {
+
+    }
+    .card-image {
+      height: 12vh;
+      margin-top: 3%;
+    }
+    .url-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 75%;
+    }
+    .git-url {
+
+    }
+    .url {
+      font-weight: 900
+    }
+    .card-content {
+      margin-right: 3%;
+      margin-left: 3%;
+      height: 50%;
+      margin-top: 3%;
+      overflow-y: scroll;
+    }
+    .card-tags {
+      border-color: white;
+      margin-top: 3%;
+      border-style: dotted;
+      width: 94%;
+    }
+    .related-blog-posts {
+      margin-top: 3%;
+    }
+}

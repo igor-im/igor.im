@@ -6,7 +6,13 @@ export default function commandHandler(data) {
 		navigate(tokens)
 	}
 	function navigate(tokens) {
-		browserHistory.push(/(blog|home|projects)/.exec(tokens[tokens.length -1])[1])
+		var route = /(blog|home|projects)/.exec(tokens[tokens.length -1])
+		if(route === null) return false;
+		if(/(home)/.test(tokens[tokens.length -1])) { 
+			browserHistory.push('/')
+			return;
+		}
+		browserHistory.push(/(blog|projects)/.exec(tokens[tokens.length -1])[1])
 	}
 	parser(data)
 	console.log(data)

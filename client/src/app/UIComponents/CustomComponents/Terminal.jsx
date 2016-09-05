@@ -20,7 +20,7 @@ export default class Terminal extends React.Component {
             content: '',
             contentHistory: [],
             prompt_l1: new Date().toString(),
-            prompt_l2: window.navigator.platform,
+            prompt_l2: 'visitor/' + window.navigator.platform + '@igor.im:~$',
             focus: false
         }
     }
@@ -45,8 +45,8 @@ export default class Terminal extends React.Component {
         return 'Commands are navigate, goto, take me to'
     }
     handleTerminalCommand(e) {
-        e.preventDefault()
         if(e.key === "Tab") {
+            e.preventDefault();
             let arrCopy = this.state.contentHistory
             if(arrCopy.length > 100) arrCopy.shift()
             arrCopy.push([this.state.prompt_l1, this.state.prompt_l2, this.state.content, this.tabHelper()])
@@ -93,7 +93,7 @@ export default class Terminal extends React.Component {
                 {this.state.contentHistory.map((v,i) => {
                     return <div key={i}><div>{v[0]}</div><div>{v[1]}</div><div>{v[2]}</div><div>{v[3]}</div></div>
                 })}
-                <div><div className='terminal_line_1_prompt'>{this.state.prompt_l1}</div><div className='terminal_line_1_prompt'>visitor/{this.state.prompt_l2}@igor.im:~$
+                <div><div className='terminal_line_1_prompt'>{this.state.prompt_l1}</div><div className='terminal_line_1_prompt'>{this.state.prompt_l2}
                 <input type='text' 
                         ref='terminalContent'
                         onChange={this.handleChange.bind(this)} 
