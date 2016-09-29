@@ -87,44 +87,6 @@ a {
   margin-right: 3vh;
 }
 
-#resume {
-  h5 {
-    font-size: medium
-  }
-}
-
-#work-exp {
-  div {
-    div {
-      span {
-        h4 {
-          display: inline-block;
-          -webkit-margin-before: 15px;
-          -webkit-margin-after: 0;
-        }
-      }
-    }
-  }
-  h5 {
-    -webkit-margin-before: 15px;
-    -webkit-margin-after: 0;
-  }
-}
-
-#blog-container {
-  .categories {
-    li {
-      list-style: none;
-      display: inline;
-      margin: 10px;
-      a {
-        text-decoration: none;
-        font-size: large;
-      }
-    }
-  }
-}
-
 ////////////////////////////////////
 
 .terminal_container {
@@ -216,4 +178,28 @@ a {
     .related-blog-posts {
       margin-top: 3%;
     }
+}
+
+////////////////////////////////////
+.categories-container {
+  width: 10vw;
+}
+.posts-container {
+  width: 80vw;
+}
+
+.mini-post {
+  height: 20vh;
+  .post-desc {
+    font-size: 0.8vw;
+    width: 64vw;
+    height: 9vh;
+    overflow-y: scroll;
+    margin-bottom: 2vh;
+  }
+  .cat-tag-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

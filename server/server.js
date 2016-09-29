@@ -5,34 +5,36 @@ const Inert = require('inert');
 const Vision = require('vision');
 const HapiReactViews = require('hapi-react-views');
 const h2o2 = require('h2o2');
+const corsHeaders = require('hapi-cors-headers')
 require('babel-core/register')({
     presets: ['react', 'es2015'],
-    plugins: ["transform-es2015-modules-commonjs", "transform-export-extensions"]
+    plugins: ["transform-es2015-modules-commonjs"]
 });
 
-const prerender = require('../client/dist/sb.js')
-console.log(prerender)
-
+// const prerender = require('../client/dist/sb.js')
+// console.log(prerender)
+var dbOpts = {
+    "url": "mongodb://localhost:27017/site",
+    "settings": {
+        "db": {
+            "native_parser": false
+        },
+        "server": {
+            poolSize: 5
+        }
+    }
+};
 const server = new Hapi.Server();
-server.connection({ port: 3001 });
-server.register([Inert, Vision, h2o2], (err) => {
+server.connection({ port: 3001});
+server.ext('onPreResponse', corsHeaders);
+server.register([Inert, Vision, h2o2, {
+    register: require('hapi-mongodb'),
+    options: dbOpts
+}], (err) => {
 
     if (err) {
         console.log('Failed to load plugins.');
     }
-
-    // server.views({
-    //     engines: {
-    //         jsx: HapiReactViews
-    //     },
-    //     relativeTo: __dirname,
-    //     path: __dirname + '/../client/src',
-    //     compileOptions: {
-    //         renderMethod: 'renderToString',
-    //         layoutPath: Path.join(__dirname, 'views'),
-    //         layout: 'html'
-    //     }
-    // });
 
     server.route({
         method: 'GET',
@@ -44,28 +46,7 @@ server.register([Inert, Vision, h2o2], (err) => {
         }
     });
 
-    server.route({
-        method: 'GET',
-        path: '/works',
-        handler: (request, reply) => {
-            console.log(prerender.html())
-            reply(prerender.html())
-        }
-    });
-
-    require('./routes.js')(server, prerender)
-
-    // server.route({
-    //     method: 'GET',
-    //     path: '/',
-    //     handler: (request, reply) => {
-    //
-    //         const context = { foo: 'baz' };
-    //         context.state = 'window.state = ' + JSON.stringify(context) + ';';
-    //
-    //         reply.view('App', context);
-    //     }
-    // });
+    require('./routes.js')(server)
 
     server.start((err) => {
 

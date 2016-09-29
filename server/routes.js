@@ -1,10 +1,12 @@
+var blog = require('./dataAccess/blog')
+
 module.exports = (server, prerender) => {
     server.route({
         method: 'GET',
         path: '/',
         handler: (request, reply) => {
-            console.log(prerender.html())
-            reply(prerender.html())
+            //console.log(prerender.html())
+            reply('hello')
         }
     });
 
@@ -19,10 +21,29 @@ module.exports = (server, prerender) => {
 
     server.route({
         method: 'GET',
-        path: '/blog/posts/{postid?}',
+        path: '/api/blog/posts',
         handler: (request, reply) => {
-            console.log(prerender.html())
-            reply(prerender.html())
+            blog.getAllPosts(request.server.plugins['hapi-mongodb'].db).then((data) => {
+                console.log('data')
+                reply(data);
+            }).catch((reason) => {
+                console.log(reason)
+                console.log('error')
+            });
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/api/blog/posts/{postid}',
+        handler: (request, reply) => {
+            blog.getPostById(request.server.plugins['hapi-mongodb'].db, parseInt(request.params.postid)).then((data) => {
+                console.log('data')
+                reply(data);
+            }).catch((reason) => {
+                console.log(reason);
+                reply('Server Error').statusCode(500)
+            });
         }
     });
 
@@ -56,6 +77,15 @@ module.exports = (server, prerender) => {
     server.route({
         method: 'GET',
         path: '/projects',
+        handler: (request, reply) => {
+            console.log(prerender.html())
+            reply(prerender.html())
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/api/projects',
         handler: (request, reply) => {
             console.log(prerender.html())
             reply(prerender.html())

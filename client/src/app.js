@@ -15,7 +15,7 @@ let store = createStore(function todoApp(state = {}, action) {
     // For now, don’t handle any actions
     // and just return the state given to us.
     return state
-})
+});
 
 // class App extends React.Component {
 //     render() {
@@ -30,7 +30,9 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App}>
-                <Route path="blog" component={Pages.Blog}/>
+                <Route path="blog" component={Pages.Blog}>
+                    <Route path="posts/:postid" component={Pages.Blog}/>
+                </Route>
                 <Route path="projects" component={Pages.Projects}/>
             </Route>
         </Router>

@@ -7,13 +7,13 @@ var definePlugin = new webpack.DefinePlugin({
 module.exports = {
 		name: 'client',
 		target: 'node',
-	    context: __dirname + "/../client/src",
+	    context: __dirname + "/../src",
 	    entry: {
 		  javascript: "./sandbox.js",
 		  html: "./index.html"
 	  	},
 	    output: {
-	        path: __dirname + "/../client/dist",
+	        path: __dirname + "/../dist",
 	        filename: "sb.js",
 	        publicPath: "",
 			libraryTarget: 'commonjs2'
