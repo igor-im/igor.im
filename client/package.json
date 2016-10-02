@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm install && webpack --config ./build/client.webpack.config.prod.js",
+    "build": "webpack --config ./build/client.webpack.config.prod.js",
     "frontend-dev": "webpack-dev-server --port 8000 --config build/client.webpack.config.dev.js --hot --inline --history-api-fallback"
   },
   "author": "",

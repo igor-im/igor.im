@@ -3,7 +3,7 @@ build:
   commands:
     - cd client
     - npm install
-    - webpack --config ./build/client.webpack.config.prod.js
+    - npm run build
 publish:
   s3:
     acl: public-read
