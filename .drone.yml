@@ -1,0 +1,16 @@
+build:
+  image: node:6
+  commands:
+    - cd client
+    - npm install
+    - webpack --config ./build/client.webpack.config.prod.js
+publish:
+  s3:
+    acl: public-read
+    region: "us-east-1"
+    bucket: $$S3_BUCKET
+    access_key: $$S3_ACCESS_KEY
+    secret_key: $$S3_SECRET_KEY
+    source: client/dist
+    target: 
+    recursive: true
