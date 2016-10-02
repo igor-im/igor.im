@@ -19,6 +19,7 @@ publish:
     registry: $$DOCKER_REG
     username: $$DOCKER_REG_UN
     password: $$DOCKER_REG_PW
+    email: $$DOCKER_REG_EMAIL
     context: server
     repo: igor.im
     tag: latest
