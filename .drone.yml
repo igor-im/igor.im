@@ -22,6 +22,5 @@ publish:
     email: $$DOCKER_REG_EMAIL
     context: server
     repo: igor.im
-    tag: latest
     file: Dockerfile
     insecure: false
