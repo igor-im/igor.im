@@ -20,7 +20,7 @@ publish:
     username: $$DOCKER_REG_UN
     password: $$DOCKER_REG_PW
     email: $$DOCKER_REG_EMAIL
-    context: server
+    context: ./server/
     repo: igor.im
     file: Dockerfile
     insecure: false
