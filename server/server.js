@@ -14,7 +14,7 @@ require('babel-core/register')({
 // const prerender = require('../client/dist/sb.js')
 // console.log(prerender)
 var dbOpts = {
-    "url": "mongodb://localhost:27017/site",
+    "url": "mongodb://mongo:27017/site",
     "settings": {
         "db": {
             "native_parser": false
@@ -34,6 +34,7 @@ server.register([Inert, Vision, h2o2, {
 
     if (err) {
         console.log('Failed to load plugins.');
+        console.log(err)
     }
 
     server.route({
