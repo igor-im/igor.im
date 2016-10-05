@@ -14,7 +14,7 @@ require('babel-core/register')({
 // const prerender = require('../client/dist/sb.js')
 // console.log(prerender)
 var dbOpts = {
-    "url": "mongodb://mongo:27017/site",
+    "url": "mongodb://mongo:27017/blog",
     "settings": {
         "db": {
             "native_parser": false
