@@ -24,3 +24,10 @@ publish:
     repo: igor.im
     file: ./server/Dockerfile
     insecure: false
+deploy:
+  rancher:
+    url: $$RANCHER
+    access_key: $$RANCHER_ACCESS_KEY
+    secret_key: $$RANCHER_SECRET_KEY
+    service: igorim-site/site
+    docker_image: $$DOCKER_REG/igor.im
