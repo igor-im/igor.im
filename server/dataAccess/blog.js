@@ -1,4 +1,4 @@
-const collection = (db) => { return db.collection('blog') };
+const collection = (db) => { return db.collection('posts') };
 
 const getAllPosts = (db) => {
     return collection(db).find().toArray();

@@ -12,7 +12,7 @@ export default class Blog extends React.Component {
         }
     }
     componentWillMount() {
-        axios.get('http://localhost:3001/api/blog/posts')
+        axios.get('http://api.igor.im/api/blog/posts')
             .then(function (response) {
                 this.setState({
                     blog_posts: response.data
