@@ -13,17 +13,30 @@ require('babel-core/register')({
 
 // const prerender = require('../client/dist/sb.js')
 // console.log(prerender)
-var dbOpts = {
-    "url": "mongodb://mongo:27017/blog",
-    "settings": {
-        "db": {
-            "native_parser": false
-        },
-        "server": {
-            poolSize: 5
+var dbOpts = [
+    {
+        "url": "mongodb://mongo:27017/blog",
+        "settings": {
+            "db": {
+                "native_parser": false
+            },
+            "server": {
+                poolSize: 5
+            }
+        }
+    },
+    {
+        "url": "mongodb://mongo:27017/projects",
+        "settings": {
+            "db": {
+                "native_parser": false
+            },
+            "server": {
+                poolSize: 5
+            }
         }
     }
-};
+];
 const server = new Hapi.Server();
 server.connection({ port: 3001});
 server.ext('onPreResponse', corsHeaders);

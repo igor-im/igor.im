@@ -1,4 +1,5 @@
 var blog = require('./dataAccess/blog')
+var projects = require('./dataAccess/projects')
 
 module.exports = (server, prerender) => {
     server.route({
@@ -23,7 +24,7 @@ module.exports = (server, prerender) => {
         method: 'GET',
         path: '/api/blog/posts',
         handler: (request, reply) => {
-            blog.getAllPosts(request.server.plugins['hapi-mongodb'].db).then((data) => {
+            blog.getAllPosts(request.server.plugins['hapi-mongodb'].db[0]).then((data) => {
                 console.log('data')
                 reply(data);
             }).catch((reason) => {
@@ -37,7 +38,7 @@ module.exports = (server, prerender) => {
         method: 'GET',
         path: '/api/blog/posts/{postid}',
         handler: (request, reply) => {
-            blog.getPostById(request.server.plugins['hapi-mongodb'].db, parseInt(request.params.postid)).then((data) => {
+            blog.getPostById(request.server.plugins['hapi-mongodb'].db[0], parseInt(request.params.postid)).then((data) => {
                 console.log('data')
                 reply(data);
             }).catch((reason) => {
@@ -82,13 +83,31 @@ module.exports = (server, prerender) => {
             reply(prerender.html())
         }
     });
-
     server.route({
         method: 'GET',
         path: '/api/projects',
         handler: (request, reply) => {
-            console.log(prerender.html())
-            reply(prerender.html())
+            projects.getAllProjects(request.server.plugins['hapi-mongodb'].db[1]).then((data) => {
+                console.log('data')
+                reply(data);
+            }).catch((reason) => {
+                console.log(reason)
+                console.log('error')
+            });
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/api/projects/{projectid}',
+        handler: (request, reply) => {
+            projects.getProjectById(request.server.plugins['hapi-mongodb'].db[1], parseInt(request.params.projectid)).then((data) => {
+                console.log('data')
+                reply(data);
+            }).catch((reason) => {
+                console.log(reason);
+                reply('Server Error').statusCode(500)
+            });
         }
     });
 

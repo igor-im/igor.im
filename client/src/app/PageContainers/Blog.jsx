@@ -25,7 +25,11 @@ export default class Blog extends React.Component {
     componentWillReceiveProps(nextProps) {
         if(nextProps.params.postid != this.props.params.postid)
             this.setState({
-                singlePostMode: nextProps.params.postid
+                singlePostMode: nextProps.params.postid,
+                content: this.state.blog_posts.filter((v) => {
+                    if(v && v.id === parseInt(nextProps.params.postid)) 
+                        return true;
+                })
             })
     }
     render() {
@@ -33,7 +37,7 @@ export default class Blog extends React.Component {
             <h1>Blog</h1>
             <div className="content-container"><Categories />
             <div className="posts-container">
-                {this.state.singlePostMode ? <Post postContent='' /> : ''}
+                {this.state.singlePostMode ? <Post postContent={this.state.content[0]} /> : ''}
                 {this.state.blog_posts && !this.state.singlePostMode ? <Posts conf={this.state.blog_posts} /> : ''}
             </div>
             </div>
