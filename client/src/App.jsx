@@ -15,7 +15,7 @@ export class App extends React.Component {
 	
     render() {
         const { hideSourceOnDrag, connectDropTarget } = this.props;
-        return <div>
+        return <div id='mainContent'>
             <RightNav />
             {this.props.children || <Pages.Home />}
             {/* <Terminal /> */}

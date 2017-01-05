@@ -1,8 +1,11 @@
 var webpack = require('webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var definePlugin = new webpack.DefinePlugin({
   __DEV__: true
 });
+
+var copyPlugin = new CopyWebpackPlugin([{from: './assets'}])
 
 module.exports = {
 		name: 'client',
@@ -46,5 +49,5 @@ module.exports = {
 			},
 		  ]
 		},
-		plugins: [definePlugin]
+		plugins: [definePlugin, copyPlugin]
 	}
