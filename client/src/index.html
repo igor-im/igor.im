@@ -18,7 +18,7 @@
         var scene, camera, renderer, stats, stats2, clock;
 
         // Used in initParticles()
-		var emitter, particleGroup, numEmitters = 600;
+		var emitter, particleGroup, numEmitters = 200;
 
 		// Setup the scene
         function init() {
@@ -62,9 +62,9 @@
                     type: Math.random() * 4 | 0,
             		position: {
                         value: new THREE.Vector3(
-                            getRandomNumber(200 + seedPos),
-                            getRandomNumber(200 + seedPos),
-                            getRandomNumber(200 + seedPos)
+                            getRandomNumber(150 + seedPos),
+                            getRandomNumber(150 + seedPos),
+                            getRandomNumber(150 + seedPos)
                         )
                     },
 

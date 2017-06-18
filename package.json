@@ -10,10 +10,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "client": "file:/media/dev/LinuxStorage1/sites/igorim/new-site/client",
+    "client": "file:/Users/igorputilov/Projects/personal/igor.im/client",
     "nodemon": "^1.9.2",
     "react-to-html-webpack-plugin": "^2.2.0",
-    "server": "file:/media/dev/LinuxStorage1/sites/igorim/new-site/server",
+    "server": "file:/Users/igorputilov/Projects/personal/igor.im/server",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
